@@ -26,5 +26,25 @@ namespace WinAlphaBot
         {
             this.InitializeComponent();
         }
+
+        private void btnStart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnInitialize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnForward_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

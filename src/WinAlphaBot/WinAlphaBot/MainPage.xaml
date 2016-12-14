@@ -8,6 +8,12 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+        <StackPanel Orientation="Vertical">
+            <Button x:Name="btnInitialize" Click="btnInitialize_Click">Initialize</Button>
+            <Button x:Name="btnStart" Click="btnStart_Click">Start</Button>
+            <Button x:Name="btnStop" Click="btnStop_Click">Stop</Button>
+            <Button x:Name="btnForward" Click="btnForward_Click">Forward</Button>
+            <!--TODO://<Button-->
+        </StackPanel>
     </Grid>
 </Page>
