@@ -8,12 +8,18 @@ namespace MotorControlLib
 {
     public interface IMotorControl
     {
+        void Initialize();
+
         void Start();
 
         void Stop();
 
-        void Initialize();
+        void Forward();
 
+        void Backward();
 
+        void TurnLeft();
+
+        void TurnRight();
     }
 }

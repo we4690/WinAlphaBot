@@ -6,6 +6,7 @@ using System.Net.Http;
 using Windows.ApplicationModel.Background;
 using MotorControlLib;
 using InfraredLib;
+using Windows.Devices.Gpio;
 
 // The Background Application template is documented at http://go.microsoft.com/fwlink/?LinkID=533884&clcid=0x409
 
@@ -22,7 +23,7 @@ namespace WinAlphaBotHeadless
             // from closing prematurely by using BackgroundTaskDeferral as
             // described in http://aka.ms/backgroundtaskdeferral
             //
-
+            //var gpio = GpioController.GetDefault();
             //var motorControl = new MotorControl();
 
             //motorControl.Initialize();
@@ -34,6 +35,20 @@ namespace WinAlphaBotHeadless
             //var infraredSensor = new InfraredSensor();
 
             //infraredSensor.Initialize();
+
+            //infraredSensor.InterruptHandler += (o, e) =>
+            //{
+            //    if(e.IsHigh)
+            //    {
+            //        //TODO:
+            //        motorControl.TurnLeft();
+            //    }
+            //    else
+            //    {
+            //        //TODO:
+            //        motorControl.TurnRight();
+            //    }
+            //};
         }
     }
 }

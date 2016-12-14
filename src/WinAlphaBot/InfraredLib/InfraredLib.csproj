@@ -108,6 +108,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IInfraredSensor.cs" />
     <Compile Include="InfraredSensor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

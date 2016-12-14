@@ -8,6 +8,16 @@ namespace MotorControlLib
 {
     public sealed class MotorControl : IMotorControl
     {
+        public void Backward()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Forward()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Initialize()
         {
             throw new NotImplementedException();
@@ -19,6 +29,16 @@ namespace MotorControlLib
         }
 
         public void Stop()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TurnLeft()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void TurnRight()
         {
             throw new NotImplementedException();
         }
