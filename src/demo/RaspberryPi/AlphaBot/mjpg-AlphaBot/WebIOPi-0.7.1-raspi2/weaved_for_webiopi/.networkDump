@@ -1,0 +1,3 @@
+Checking if DNS works ... .[OK]
+Checking TCP connectivity to yoics.net...<oip=192.168.6.103> [OK]
+Send to 174.36.235.146:5960 [] [mip=113.88.20.13] [oport=59612 mport=57984] [no remap] [OK]
