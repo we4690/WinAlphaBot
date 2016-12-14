@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace MotorControlLib
 {
-    public sealed class Class1
+    public sealed class MotorControl : IMotorControl
     {
+        public void Initialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Start()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Stop()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

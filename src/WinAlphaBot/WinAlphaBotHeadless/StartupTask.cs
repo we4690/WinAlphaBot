@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Net.Http;
 using Windows.ApplicationModel.Background;
+using MotorControlLib;
+using InfraredLib;
 
 // The Background Application template is documented at http://go.microsoft.com/fwlink/?LinkID=533884&clcid=0x409
 
@@ -20,6 +22,18 @@ namespace WinAlphaBotHeadless
             // from closing prematurely by using BackgroundTaskDeferral as
             // described in http://aka.ms/backgroundtaskdeferral
             //
+
+            //var motorControl = new MotorControl();
+
+            //motorControl.Initialize();
+
+            //motorControl.Start();
+
+            //motorControl.Stop();
+
+            //var infraredSensor = new InfraredSensor();
+
+            //infraredSensor.Initialize();
         }
     }
 }

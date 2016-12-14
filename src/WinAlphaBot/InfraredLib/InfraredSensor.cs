@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace InfraredLib
 {
-    public sealed class InfraredSensor
+    public sealed class InfraredSensor : IInfraredSensor
     {
+        public void Initialize()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
