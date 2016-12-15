@@ -1,0 +1,13 @@
+LM2596 and battery version 
+http://baike.baidu.com/item/18650/2097188?fr=aladdin
+C:\Users\Administrator\Desktop\workspace\zhifengliu\docs\datasheet\lm2596
+
+L298P and circuit schematic
+C:\Users\Administrator\Desktop\workspace\zhifengliu\docs\datasheet\L298P
+C:\Users\Administrator\Desktop\workspace\zhifengliu\docs\schematic\AlphaBot_Schematic
+
+Logic_gate:
+https://en.wikipedia.org/wiki/Logic_gate
+
+The differences between raspberry-pi-1-2-3-compared.
+https://www.stewright.me/2016/03/raspberry-pi-1-2-3-compared/
