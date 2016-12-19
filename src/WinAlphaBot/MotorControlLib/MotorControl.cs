@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Devices.Gpio;
 
 namespace MotorControlLib
 {
@@ -10,6 +11,7 @@ namespace MotorControlLib
     {
         public void Backward()
         {
+
             throw new NotImplementedException();
         }
 
@@ -20,6 +22,7 @@ namespace MotorControlLib
 
         public void Initialize()
         {
+            var gpio = GpioController.GetDefault();
             throw new NotImplementedException();
         }
 

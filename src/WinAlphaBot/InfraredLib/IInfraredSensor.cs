@@ -21,7 +21,7 @@ namespace InfraredLib
     {
 
         void Initialize();
-
+        void detectVoltage(object sender, object e);
         //EventHandler InterruptHandler { get; set; }
     }
 }

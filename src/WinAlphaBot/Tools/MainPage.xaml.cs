@@ -51,7 +51,7 @@ namespace Tools
                 pwmController.SetDesiredFrequency(pwmController.MinFrequency);
 
                 // Open pin 5 for pulse width modulation
-                var servoGpioPin = pwmController.OpenPin(5);
+                var servoGpioPin = pwmController.OpenPin(18);
 
                 // Set the Duty Cycle - 0.05 will set the servo to its 0 degree position
                 servoGpioPin.SetActiveDutyCyclePercentage(.9);
