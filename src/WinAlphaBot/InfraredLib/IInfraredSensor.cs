@@ -6,22 +6,36 @@ using System.Threading.Tasks;
 
 namespace InfraredLib
 {
-    //public class InfraredInterruptEvent : EventArgs
-    //{
-    //    public bool IsHigh { get; private set; }
+    public sealed class InfraredInterruptEvent
+    {
+        public bool IsHigh { get; private set; }
 
-    //    public InfraredInterruptEvent()
-    //        : base()
-    //    {
-    //        IsHigh = false;
-    //    }
-    //}
-    
+        public InfraredInterruptEvent()
+            : base()
+        {
+            IsHigh = false;
+        }
+
+        public InfraredInterruptEvent(bool isHigh)
+        {
+            IsHigh = isHigh;
+        }
+    }
+
+    public enum InfraredState
+    {
+        Active,
+        Inactive
+    }
+
     public interface IInfraredSensor
     {
-
         void Initialize();
-        void detectVoltage(object sender, object e);
-        //EventHandler InterruptHandler { get; set; }
+
+        //void detectVoltage(object sender, object e);
+
+        bool DetectVoltage();
+
+        event EventHandler<InfraredInterruptEvent> InterruptHandler;
     }
 }

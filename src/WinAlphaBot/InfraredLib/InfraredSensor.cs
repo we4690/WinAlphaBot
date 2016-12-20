@@ -1,59 +1,74 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using Windows.Devices.Gpio;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Net;
+using Windows.Devices.Gpio;
+using Windows.UI.Xaml;
 
 namespace InfraredLib
 {
     public sealed class InfraredSensor : IInfraredSensor
     {
-        //public EventHandler InterruptHandler
-        //{
-        //    get
-        //    {
-        //        throw new NotImplementedException();
-        //    }
+        #region Private Members
 
-        //    set
-        //    {
-        //        throw new NotImplementedException();
-        //    }
-        //}
+        private int pinNumber;
+
+        private const int PinLeft = 4;
+        private const int PinRight = 5;
+
         private GpioPin pinInputLeft;
         private GpioPin pinInputRight;
         private DispatcherTimer timer;
 
+        #endregion
+
+        #region Properties
+
+        public event EventHandler<InfraredInterruptEvent> InterruptHandler;
+
+        #endregion
+
+        #region Constructor
+
+        public InfraredSensor(int pin)
+        {
+            pinNumber = pin;
+        }
+
+        #endregion
+
+        #region IInfraredSensor
+
         public void Initialize()
         {
+            var gpio = GpioController.GetDefault();
 
-            GpioController gpio = GpioController.GetDefault();
-            pinInputLeft = gpio.OpenPin(4);    //pin 7 
-            pinInputRight = gpio.OpenPin(5);    //pi 29
+            pinInputLeft = gpio.OpenPin(pinNumber);       //pin 7 
+            pinInputRight = gpio.OpenPin(PinRight);     //pi 29
             pinInputLeft.SetDriveMode(GpioPinDriveMode.Input);
             pinInputRight.SetDriveMode(GpioPinDriveMode.Input);
 
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromMilliseconds(500);
-            timer.Tick += detectVoltage;
+            timer.Tick += detectVoltage1;
             timer.Start();
-            throw new NotImplementedException();
+
+            // TODO: consider using the below code snippet
+            pinInputLeft.ValueChanged += (o, e) =>
+            {
+                bool isHigh = e.Edge == GpioPinEdge.RisingEdge;
+
+                System.Diagnostics.Debug.WriteLine("valueLeft is " + isHigh);
+
+                OnInterruptOccurred(isHigh);
+            };
         }
 
-        public void detectVoltage(object sender, object e)
+        public bool DetectVoltage()
+        {
+            return false;
+            //TODO: read GPIO voltage
+        }
+
+        public void detectVoltage1(object sender, object e)
         {
             GpioPinValue valueLeft = pinInputLeft.Read();
             GpioPinValue valueRight = pinInputRight.Read();
@@ -74,5 +89,20 @@ namespace InfraredLib
                 System.Diagnostics.Debug.WriteLine("valueRight is Low");
             }
         }
+
+        #endregion
+
+        #region Private Functions
+
+        private void OnInterruptOccurred(bool isHigh)
+        {
+            EventHandler<InfraredInterruptEvent> interruptHandler = null;
+            interruptHandler = Interlocked.CompareExchange(ref interruptHandler, InterruptHandler, null);
+
+            if (interruptHandler != null)
+                interruptHandler(this, new InfraredInterruptEvent(isHigh));
+        }
+
+        #endregion
     }
 }
