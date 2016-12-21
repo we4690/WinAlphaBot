@@ -15,7 +15,6 @@ namespace TrackerLib
     {
         public TrackerSensorStatus Status { get; private set; }
 
-
         public TrackerSensorEvent(TrackerSensorStatus status)
         {
             Status = status;
@@ -27,6 +26,9 @@ namespace TrackerLib
     {
         void Initialize();
         void UnInitialize();
+
+        int PinNumber { get; }
+
         TrackerSensorStatus DetectStatus();
 
         event EventHandler<TrackerSensorEvent> InterruptHandler;

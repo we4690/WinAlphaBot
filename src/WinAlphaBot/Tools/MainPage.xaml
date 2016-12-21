@@ -18,15 +18,55 @@
             <Button x:Name="btnLedOn" Click="btnLedOn_Click">LED On</Button>
             <Button x:Name="btnLedOff" Click="btnLedOff_Click">LED Off</Button>
         </StackPanel>
-        
-        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center">
+
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="128,115,60,98.667" Grid.RowSpan="2">
             <StackPanel Orientation="Horizontal">
                 <TextBlock>PWM Frequency</TextBlock>
                 <TextBox x:Name="tbPWMFrequency" Text="1"></TextBox>
             </StackPanel>
-            <Button x:Name="btnPwmInitialize" Click="btnPwmInitialize_Click">Initialize PWM</Button>
+            <Button x:Name="btnPwmInitialize" Click="btnPwmInitialize_Click" Content="Initialize PWM"/>
             <Button x:Name="btnPwmStart" Click="btnPwmStart_Click">Start PWM</Button>
             <Button x:Name="btnPwmStop" Click="btnPwmStop_Click">Stop PWM</Button>
         </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom"  Grid.RowSpan="2">
+            <Button x:Name="btnTrackerInitialize" HorizontalAlignment="Left"  Click="btnTrackerInitialize_Click">Initialize TrackerSensor</Button>
+            <Button x:Name="btnTrackerUpdate"  HorizontalAlignment="Left" Click="btnTrackerUpdate_Click">Update TrackerSensor Status</Button>
+            <Button x:Name="btnTrackerUnInitialize"  HorizontalAlignment="Left" Click="btnTrackerUnInitialize_Click">UnInitialize TrackerSensor</Button>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>TrackSensor1</TextBlock>
+                <TextBox x:Name="tbTrackerSensor1" Text="4" Height="5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>TrackSensor2</TextBlock>
+                <TextBox x:Name="tbTrackerSensor2" Text="6" Height="5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>TrackSensor3</TextBlock>
+                <TextBox x:Name="tbTrackerSensor3" Text="22" Height="5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>TrackSensor4</TextBlock>
+                <TextBox x:Name="tbTrackerSensor4" Text="23" Height="5"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>TrackSensor5</TextBlock>
+                <TextBox x:Name="tbTrackerSensor" Text="27" Height="5"></TextBox>
+            </StackPanel>
+            <!--<stackpanel orientation="horizontal">
+                <textblock>tracksensor3</textblock>
+                <textbox x:name="tbtrackersensor3" text="1" height="5"></textbox>
+            </stackpanel>
+            <stackpanel orientation="horizontal">
+                <textblock>tracksensor4</textblock>
+                <textbox x:name="tbtrackersensor4" text="1" height="5"></textbox>
+            </stackpanel>
+            <stackpanel orientation="horizontal">
+                <textblock>tracksensor5</textblock>
+                <textbox x:name="tbtrackersensor5" text="1" height="5"></textbox>
+            </stackpanel>-->
+        </StackPanel>
+
+
     </Grid>
 </Page>

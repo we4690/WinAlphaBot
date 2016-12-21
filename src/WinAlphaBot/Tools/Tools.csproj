@@ -131,6 +131,24 @@
       <Name>Windows IoT Extensions for the UWP</Name>
     </SDKReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\InfraredLib\InfraredLib.csproj">
+      <Project>{efc9734d-0079-4a65-b92e-1f35af535010}</Project>
+      <Name>InfraredLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MotorControlLib\MotorControlLib.csproj">
+      <Project>{9520f904-3ed0-456c-b3f0-654aec27cc37}</Project>
+      <Name>MotorControlLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PIDLib\PIDLib.csproj">
+      <Project>{381b394d-5c0f-470d-9b24-1f238e4b0881}</Project>
+      <Name>PIDLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TrackerLib\TrackerLib.csproj">
+      <Project>{ee171c97-b9d7-4c4d-a836-b710b23b0b08}</Project>
+      <Name>TrackerLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

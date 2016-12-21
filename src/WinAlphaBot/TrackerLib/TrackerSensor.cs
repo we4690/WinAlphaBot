@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.IoT.Lightning.Providers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.Devices;
 using Windows.Devices.Gpio;
 
 namespace TrackerLib
@@ -23,6 +25,14 @@ namespace TrackerLib
 
         public event EventHandler<TrackerSensorEvent> InterruptHandler;
 
+        public int PinNumber
+        {
+            get
+            {
+                return pinNumber;
+            }
+        }
+
         #endregion
 
         #region Constructor
@@ -38,9 +48,14 @@ namespace TrackerLib
 
         public void Initialize()
         {
+            if (LightningProvider.IsLightningEnabled)
+            {
+                LowLevelDevicesController.DefaultProvider = LightningProvider.GetAggregateProvider();
+            }
+
             gpio = GpioController.GetDefault();
 
-            pinInput = gpio.OpenPin(pinNumber);
+            pinInput = gpio.OpenPin(PinNumber);
             pinInput.SetDriveMode(GpioPinDriveMode.Input);
 
             pinInput.ValueChanged += OnPinValueChanged;
@@ -76,18 +91,18 @@ namespace TrackerLib
                 TrackerSensorStatus.Active
                 : TrackerSensorStatus.Inactive;
 
-            System.Diagnostics.Debug.WriteLine("valueLeft is " + status);
+            //System.Diagnostics.Debug.WriteLine("valueLeft is " + status);
 
             OnInterruptOccurred(status);
         }
 
         private void OnInterruptOccurred(TrackerSensorStatus status)
         {
-            EventHandler<TrackerSensorEvent> interruptHandler = null;
-            interruptHandler = Interlocked.CompareExchange(ref interruptHandler, InterruptHandler, null);
+            //EventHandler<TrackerSensorEvent> interruptHandler = null;
+            //Interlocked.CompareExchange(ref interruptHandler, InterruptHandler, null);
 
-            if (interruptHandler != null)
-                interruptHandler(this, new TrackerSensorEvent(status));
+            if (InterruptHandler != null)
+                InterruptHandler(this, new TrackerSensorEvent(status));
         }
 
         public void Dispose()
