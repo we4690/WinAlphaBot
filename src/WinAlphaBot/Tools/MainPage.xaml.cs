@@ -1,22 +1,10 @@
-﻿using InfraredLib;
-using Microsoft.IoT.Lightning.Providers;
+﻿using Microsoft.IoT.Lightning.Providers;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using Windows.Devices;
+using Windows.Devices.Gpio;
 using Windows.Devices.Pwm;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -31,7 +19,28 @@ namespace Tools
         {
             this.InitializeComponent();
 
-            btnInitialize_Click(null, null);
+            Test();
+
+            //btnInitialize_Click(null, null);
+        }
+
+        private GpioController gpioController;
+        private GpioPin gpioPin;
+
+        private async void Test()
+        {
+            if (LightningProvider.IsLightningEnabled)
+            {
+                LowLevelDevicesController.DefaultProvider = LightningProvider.GetAggregateProvider();
+            }
+
+            gpioController = await GpioController.GetDefaultAsync();
+
+            gpioPin = gpioController.OpenPin(5);    //pin 7 
+                                                    //pinInput = gpio.OpenPin(5);    //pi 29
+
+            gpioPin.SetDriveMode(GpioPinDriveMode.Output);
+            
         }
 
 
@@ -72,31 +81,41 @@ namespace Tools
             }
 
 
-            var infraredSensor = new InfraredSensor(4);
-            infraredSensor.Initialize();
+            //var infraredSensor = new InfraredSensor(4);
+            //infraredSensor.Initialize();
 
-            infraredSensor.InterruptHandler += InfraredSensor_InterruptHandler;
+            //infraredSensor.InterruptHandler += InfraredSensor_InterruptHandler;
         }
 
-        private void InfraredSensor_InterruptHandler(object sender, InfraredInterruptEvent e)
-        {
-            InfraredState status = e.Status;
-            switch(status)
-            {
-                case InfraredState.Active:
-                    var motorControl = new MotorControl();
-                    motorControl.TurnLeft();
-                    break;
-                case InfraredState.Inactive:
-                    break;
-                default:
-                    break;
-            }
-        }
+        //private void InfraredSensor_InterruptHandler(object sender, InfraredInterruptEvent e)
+        //{
+        //    //    InfraredState status = e.Status;
+        //    //    switch(status)
+        //    //    {
+        //    //        case InfraredState.Active:
+        //    //            var motorControl = new MotorControl();
+        //    //            motorControl.TurnLeft();
+        //    //            break;
+        //    //        case InfraredState.Inactive:
+        //    //            break;
+        //    //        default:
+        //    //            break;
+        //    //    }
+        //}
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnLedOn_Click(object sender, RoutedEventArgs e)
+        {
+            gpioPin.Write(GpioPinValue.High);
+        }
+
+        private void btnLedOff_Click(object sender, RoutedEventArgs e)
+        {
+            gpioPin.Write(GpioPinValue.Low);
         }
     }
 }
