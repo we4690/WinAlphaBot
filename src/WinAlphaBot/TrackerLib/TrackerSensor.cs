@@ -45,21 +45,24 @@ namespace TrackerLib
             pinInput = gpio.OpenPin(pinNumber);
             pinInput.SetDriveMode(GpioPinDriveMode.Input);
 
-            pinInput.ValueChanged += (o, e) =>
-            {
-                var status = e.Edge == GpioPinEdge.RisingEdge ? 
-                    TrackerSensorStatus.Active 
-                    : TrackerSensorStatus.Inactive;
+            pinInput.ValueChanged += OnPinValueChanged;
+        }
 
-                System.Diagnostics.Debug.WriteLine("valueLeft is " + status);
+        public void UnInitialize()
+        {
+            if (pinInput == null)
+                return;
 
-                OnInterruptOccurred(status);
-            };
+            pinInput.ValueChanged -= OnPinValueChanged;
         }
 
         public TrackerSensorStatus DetectStatus()
         {
+            if (pinInput == null)
+                return TrackerSensorStatus.Inactive;
+
             var value = pinInput.Read();
+
             return value == GpioPinValue.High ?
                     TrackerSensorStatus.Active
                     : TrackerSensorStatus.Inactive;
@@ -68,6 +71,17 @@ namespace TrackerLib
         #endregion
 
         #region Private Functions
+
+        private void OnPinValueChanged(object sender, GpioPinValueChangedEventArgs args)
+        {
+            var status = args.Edge == GpioPinEdge.RisingEdge ?
+                TrackerSensorStatus.Active
+                : TrackerSensorStatus.Inactive;
+
+            System.Diagnostics.Debug.WriteLine("valueLeft is " + status);
+
+            OnInterruptOccurred(status);
+        }
 
         private void OnInterruptOccurred(TrackerSensorStatus status)
         {
