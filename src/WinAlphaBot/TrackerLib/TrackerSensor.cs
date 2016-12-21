@@ -10,8 +10,6 @@ namespace TrackerLib
 {
     public sealed class TrackerSensor : ITrackerSensor
     {
-
-
         #region Private Members
 
         private int pinNumber;
@@ -90,6 +88,11 @@ namespace TrackerLib
 
             if (interruptHandler != null)
                 interruptHandler(this, new TrackerSensorEvent(status));
+        }
+
+        public void Dispose()
+        {
+            // TODO: Implement Dispose
         }
 
         #endregion

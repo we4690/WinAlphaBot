@@ -23,10 +23,10 @@ namespace TrackerLib
     }
 
 
-    public interface ITrackerSensor
+    public interface ITrackerSensor : IDisposable
     {
         void Initialize();
-
+        void UnInitialize();
         TrackerSensorStatus DetectStatus();
 
         event EventHandler<TrackerSensorEvent> InterruptHandler;
