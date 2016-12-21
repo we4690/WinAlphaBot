@@ -18,16 +18,14 @@ namespace Tools
         public MainPage()
         {
             this.InitializeComponent();
-
-            Test();
-
-            //btnInitialize_Click(null, null);
         }
+
+        #region GPIO
 
         private GpioController gpioController;
         private GpioPin gpioPin;
 
-        private async void Test()
+        private async void btnLedInitialize_Click(object sender, RoutedEventArgs e)
         {
             if (LightningProvider.IsLightningEnabled)
             {
@@ -36,15 +34,26 @@ namespace Tools
 
             gpioController = await GpioController.GetDefaultAsync();
 
-            gpioPin = gpioController.OpenPin(5);    //pin 7 
-                                                    //pinInput = gpio.OpenPin(5);    //pi 29
+            gpioPin = gpioController.OpenPin(5);
 
             gpioPin.SetDriveMode(GpioPinDriveMode.Output);
-            
         }
 
+        private async void btnLedOn_Click(object sender, RoutedEventArgs e)
+        {
+            gpioPin.Write(GpioPinValue.High);
+        }
 
-        private async void btnInitialize_Click(object sender, RoutedEventArgs e)
+        private void btnLedOff_Click(object sender, RoutedEventArgs e)
+        {
+            gpioPin.Write(GpioPinValue.Low);
+        }
+
+        #endregion
+
+        #region PWM
+
+        private async void btnPwmInitialize_Click(object sender, RoutedEventArgs e)
         {
             if (LightningProvider.IsLightningEnabled)
             {
@@ -79,8 +88,6 @@ namespace Tools
                 //Task.Delay(1000).Wait();
                 //servoGpioPin.Stop();
             }
-
-
             //var infraredSensor = new InfraredSensor(4);
             //infraredSensor.Initialize();
 
@@ -103,19 +110,20 @@ namespace Tools
         //    //    }
         //}
 
-        private void btnStart_Click(object sender, RoutedEventArgs e)
+        private void btnPwmStart_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
-        private void btnLedOn_Click(object sender, RoutedEventArgs e)
+        private void btnPwmStop_Click(object sender, RoutedEventArgs e)
         {
-            gpioPin.Write(GpioPinValue.High);
+
         }
 
-        private void btnLedOff_Click(object sender, RoutedEventArgs e)
-        {
-            gpioPin.Write(GpioPinValue.Low);
-        }
+        #endregion
+
+        #region Tracker Sensor
+
+        #endregion
     }
 }

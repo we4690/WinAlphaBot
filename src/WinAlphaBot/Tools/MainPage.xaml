@@ -8,23 +8,25 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Horizontal">
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Vertical">
-                    <Button x:Name="btnLedOn" Click="btnLedOn_Click" Margin="10,200,100,10">On</Button>
-                    <Button x:Name="btnLedOff" Click="btnLedOff_Click" Margin="10,10,100,100">Off</Button>
-                </StackPanel>
-                <!--<Button x:Name="btnInitialize" Click="btnInitialize_Click">Initialize</Button>
-                <Button x:Name="btnStart" Click="btnStart_Click">Start</Button>-->
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Center">
+            <Button x:Name="btnLedInitialize" Click="btnLedInitialize_Click">Initialize LED</Button>
+            <Button x:Name="btnLedOn" Click="btnLedOn_Click">LED On</Button>
+            <Button x:Name="btnLedOff" Click="btnLedOff_Click">LED Off</Button>
+        </StackPanel>
+        
+        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock>PWM Frequency</TextBlock>
+                <TextBox x:Name="tbPWMFrequency" Text="1"></TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>PWM Frequency</TextBlock>
-                    <TextBox x:Name="tbFrequency" Text="1"></TextBox>
-                </StackPanel>
-                <Button x:Name="btnInitialize" Click="btnInitialize_Click">Initialize</Button>
-                <Button x:Name="btnStart" Click="btnStart_Click">Start</Button>
-            </StackPanel>
+            <Button x:Name="btnPwmInitialize" Click="btnPwmInitialize_Click">Initialize PWM</Button>
+            <Button x:Name="btnPwmStart" Click="btnPwmStart_Click">Start PWM</Button>
+            <Button x:Name="btnPwmStop" Click="btnPwmStop_Click">Stop PWM</Button>
         </StackPanel>
     </Grid>
 </Page>
