@@ -1,4 +1,5 @@
-﻿using Microsoft.IoT.Lightning.Providers;
+﻿using InfraredLib;
+using Microsoft.IoT.Lightning.Providers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -70,6 +71,27 @@ namespace Tools
                 //servoGpioPin.Stop();
             }
 
+
+            var infraredSensor = new InfraredSensor(4);
+            infraredSensor.Initialize();
+
+            infraredSensor.InterruptHandler += InfraredSensor_InterruptHandler;
+        }
+
+        private void InfraredSensor_InterruptHandler(object sender, InfraredInterruptEvent e)
+        {
+            InfraredState status = e.Status;
+            switch(status)
+            {
+                case InfraredState.Active:
+                    var motorControl = new MotorControl();
+                    motorControl.TurnLeft();
+                    break;
+                case InfraredState.Inactive:
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
