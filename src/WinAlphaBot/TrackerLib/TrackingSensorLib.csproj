@@ -7,8 +7,8 @@
     <ProjectGuid>{EE171C97-B9D7-4C4D-A836-B710B23B0B08}</ProjectGuid>
     <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TrackerLib</RootNamespace>
-    <AssemblyName>TrackerLib</AssemblyName>
+    <RootNamespace>TrackingSensorLib</RootNamespace>
+    <AssemblyName>TrackingSensorLib</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
@@ -108,9 +108,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ITrackerSensor.cs" />
+    <Compile Include="ITrackingSensor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TrackerSensor.cs" />
+    <Compile Include="TrackingSensor.cs" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

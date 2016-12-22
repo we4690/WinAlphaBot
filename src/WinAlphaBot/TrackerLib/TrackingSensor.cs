@@ -1,16 +1,11 @@
 ﻿using Microsoft.IoT.Lightning.Providers;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Windows.Devices;
 using Windows.Devices.Gpio;
 
-namespace TrackerLib
+namespace TrackingSensorLib
 {
-    public sealed class TrackerSensor : ITrackerSensor
+    public sealed class TrackingSensor : ITrackingSensor
     {
         #region Private Members
 
@@ -23,7 +18,7 @@ namespace TrackerLib
 
         #region Properties
 
-        public event EventHandler<TrackerSensorEvent> InterruptHandler;
+        public event EventHandler<TrackingSensorEventArgs> InterruptHandler;
 
         public int PinNumber
         {
@@ -37,7 +32,7 @@ namespace TrackerLib
 
         #region Constructor
 
-        public TrackerSensor(int pin)
+        public TrackingSensor(int pin)
         {
             pinNumber = pin;
         }
@@ -69,16 +64,16 @@ namespace TrackerLib
             pinInput.ValueChanged -= OnPinValueChanged;
         }
 
-        public TrackerSensorStatus DetectStatus()
+        public TrackingSensorStatus DetectStatus()
         {
             if (pinInput == null)
-                return TrackerSensorStatus.Inactive;
+                return TrackingSensorStatus.Inactive;
 
             var value = pinInput.Read();
 
             return value == GpioPinValue.High ?
-                    TrackerSensorStatus.Active
-                    : TrackerSensorStatus.Inactive;
+                    TrackingSensorStatus.Active
+                    : TrackingSensorStatus.Inactive;
         }
 
         #endregion
@@ -88,21 +83,21 @@ namespace TrackerLib
         private void OnPinValueChanged(object sender, GpioPinValueChangedEventArgs args)
         {
             var status = args.Edge == GpioPinEdge.RisingEdge ?
-                TrackerSensorStatus.Active
-                : TrackerSensorStatus.Inactive;
+                TrackingSensorStatus.Active
+                : TrackingSensorStatus.Inactive;
 
             //System.Diagnostics.Debug.WriteLine("valueLeft is " + status);
 
             OnInterruptOccurred(status);
         }
 
-        private void OnInterruptOccurred(TrackerSensorStatus status)
+        private void OnInterruptOccurred(TrackingSensorStatus status)
         {
             //EventHandler<TrackerSensorEvent> interruptHandler = null;
             //Interlocked.CompareExchange(ref interruptHandler, InterruptHandler, null);
 
             if (InterruptHandler != null)
-                InterruptHandler(this, new TrackerSensorEvent(status));
+                InterruptHandler(this, new TrackingSensorEventArgs(status));
         }
 
         public void Dispose()

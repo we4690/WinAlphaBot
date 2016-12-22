@@ -1,7 +1,7 @@
 ﻿using Microsoft.IoT.Lightning.Providers;
 using System;
 using System.Threading;
-using TrackerLib;
+using TrackingSensorLib;
 using Windows.Devices;
 using Windows.Devices.Gpio;
 using Windows.Devices.Pwm;
@@ -126,31 +126,31 @@ namespace Tools
 
         #region Tracker Sensor
 
-        private ITrackerSensor trackerSensor1;
-        private ITrackerSensor trackerSensor2;
-        private ITrackerSensor trackerSensor3;
-        private ITrackerSensor trackerSensor4;
-        private ITrackerSensor trackerSensor5;
+        private ITrackingSensor trackerSensor1;
+        private ITrackingSensor trackerSensor2;
+        private ITrackingSensor trackerSensor3;
+        private ITrackingSensor trackerSensor4;
+        private ITrackingSensor trackerSensor5;
 
         private void btnTrackerInitialize_Click(object sender, RoutedEventArgs e)
         {
-            trackerSensor1 = new TrackerSensor(4);
+            trackerSensor1 = new TrackingSensor(4);
             trackerSensor1.Initialize();
             trackerSensor1.InterruptHandler += TrackerSensor_InterruptHandler;
 
-            trackerSensor2 = new TrackerSensor(6);
+            trackerSensor2 = new TrackingSensor(6);
             trackerSensor2.Initialize();
             trackerSensor2.InterruptHandler += TrackerSensor_InterruptHandler;
 
-            trackerSensor3 = new TrackerSensor(22);
+            trackerSensor3 = new TrackingSensor(22);
             trackerSensor3.Initialize();
             trackerSensor3.InterruptHandler += TrackerSensor_InterruptHandler;
 
-            trackerSensor4 = new TrackerSensor(23);
+            trackerSensor4 = new TrackingSensor(23);
             trackerSensor4.Initialize();
             trackerSensor4.InterruptHandler += TrackerSensor_InterruptHandler;
 
-            trackerSensor5 = new TrackerSensor(27);
+            trackerSensor5 = new TrackingSensor(27);
             trackerSensor5.Initialize();
             trackerSensor5.InterruptHandler += TrackerSensor_InterruptHandler;
         }
@@ -196,7 +196,7 @@ namespace Tools
         }
 
         //private DispatcherTimer timer;
-        private void TrackerSensor_InterruptHandler(object sender, TrackerSensorEvent e)
+        private void TrackerSensor_InterruptHandler(object sender, TrackingSensorEventArgs e)
         {
 
             //timer = new DispatcherTimer();
@@ -204,7 +204,7 @@ namespace Tools
             //timer.Tick += Timer_Tick;
             //timer.Start();
             System.Diagnostics.Debug.WriteLine("*************************** trackersensor_interrupthandler **************************** ");
-            var tracker = sender as ITrackerSensor;
+            var tracker = sender as ITrackingSensor;
 
             switch (tracker.PinNumber)
             {

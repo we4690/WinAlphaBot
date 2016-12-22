@@ -144,9 +144,9 @@
       <Project>{381b394d-5c0f-470d-9b24-1f238e4b0881}</Project>
       <Name>PIDLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TrackerLib\TrackerLib.csproj">
+    <ProjectReference Include="..\TrackerLib\TrackingSensorLib.csproj">
       <Project>{ee171c97-b9d7-4c4d-a836-b710b23b0b08}</Project>
-      <Name>TrackerLib</Name>
+      <Name>TrackingSensorLib</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
