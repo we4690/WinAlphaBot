@@ -3,7 +3,7 @@ using System.Threading;
 using Windows.Devices.Gpio;
 using Windows.UI.Xaml;
 
-namespace InfraredLib
+namespace InfraredSensorLib
 {
     public sealed class InfraredSensor : IInfraredSensor
     {

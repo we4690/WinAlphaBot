@@ -127,9 +127,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Libs\InfraredLib\InfraredLib.csproj">
+    <ProjectReference Include="..\Libs\InfraredLib\InfraredSensorLib.csproj">
       <Project>{efc9734d-0079-4a65-b92e-1f35af535010}</Project>
-      <Name>InfraredLib</Name>
+      <Name>InfraredSensorLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\Libs\MotorControlLib\MotorControlLib.csproj">
       <Project>{9520f904-3ed0-456c-b3f0-654aec27cc37}</Project>

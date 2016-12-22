@@ -7,8 +7,8 @@
     <ProjectGuid>{EFC9734D-0079-4A65-B92E-1F35AF535010}</ProjectGuid>
     <OutputType>winmdobj</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InfraredLib</RootNamespace>
-    <AssemblyName>InfraredLib</AssemblyName>
+    <RootNamespace>InfraredSensorLib</RootNamespace>
+    <AssemblyName>InfraredSensorLib</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>

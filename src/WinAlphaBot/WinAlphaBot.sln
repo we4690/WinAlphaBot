@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorControlLibTest", "Tests\MotorControlLibTest\MotorControlLibTest.csproj", "{10EC68F2-6F87-4F67-BBA8-0F2C2B82E011}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraredLib", "Libs\InfraredLib\InfraredLib.csproj", "{EFC9734D-0079-4A65-B92E-1F35AF535010}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfraredSensorLib", "Libs\InfraredLib\InfraredSensorLib.csproj", "{EFC9734D-0079-4A65-B92E-1F35AF535010}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotorControlLib", "Libs\MotorControlLib\MotorControlLib.csproj", "{9520F904-3ED0-456C-B3F0-654AEC27CC37}"
 EndProject
