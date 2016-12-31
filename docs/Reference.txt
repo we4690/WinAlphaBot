@@ -15,3 +15,6 @@ https://www.stewright.me/2016/03/raspberry-pi-1-2-3-compared/
 Raspberry Pi PWM pinout
 http://elinux.org/RPi_Low-level_peripherals
 https://www.raspberrypi.org/forums/viewtopic.php?f=91&t=86609
+
+Lightning
+https://developer.microsoft.com/en-us/windows/iot/docs/lightningproviders

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProjectGuid>{C3AB3806-081A-4A9B-B6EA-DACA0184BD36}</ProjectGuid>
+    <ProjectGuid>{5795DA90-C328-4201-9D6A-F8CD3C9EE30C}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WinAlphaBot</RootNamespace>
@@ -12,7 +12,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -92,13 +92,50 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
+    <Compile Include="Services\SettingsServices\SettingsService.cs" />
+    <Compile Include="ViewModels\DetailPageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="Views\Busy.xaml.cs">
+      <DependentUpon>Busy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DetailPage.xaml.cs">
+      <DependentUpon>DetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CommandServerModel.cs" />
+    <Compile Include="Models\MotorControlModel.cs" />
+    <Compile Include="Models\TrackingSensorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CommandServerViewModel.cs" />
+    <Compile Include="ViewModels\MotorControlViewModel.cs" />
+    <Compile Include="ViewModels\TrackingSensorViewModel.cs" />
+    <Compile Include="Views\CommandServerView.xaml.cs">
+      <DependentUpon>CommandServerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MotorControlView.xaml.cs">
+      <DependentUpon>MotorControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TrackingSensorView.xaml.cs">
+      <DependentUpon>TrackingSensorView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -121,29 +158,79 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainPage.xaml">
+    <Page Include="Styles\Custom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\Busy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\CommandServerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MotorControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TrackingSensorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Libs\InfraredSensorLib\InfraredSensorLib.csproj">
-      <Project>{efc9734d-0079-4a65-b92e-1f35af535010}</Project>
-      <Name>InfraredSensorLib</Name>
+    <ProjectReference Include="..\Libs\AlphaBotControlLib\AlphaBotControlLib.csproj">
+      <Project>{da1e3da3-f504-4399-91d6-3bfdbc32c606}</Project>
+      <Name>AlphaBotControlLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Libs\MotorControlLib\MotorControlLib.csproj">
-      <Project>{9520f904-3ed0-456c-b3f0-654aec27cc37}</Project>
-      <Name>MotorControlLib</Name>
+    <ProjectReference Include="..\Libs\AlphaBotControlServer.UWP\AlphaBotControlServer.UWP.csproj">
+      <Project>{e8ddc5ce-4605-46f6-b9d2-e6df372d8f64}</Project>
+      <Name>AlphaBotControlServer.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Libs\PIDLib\PIDLib.csproj">
-      <Project>{381b394d-5c0f-470d-9b24-1f238e4b0881}</Project>
-      <Name>PIDLib</Name>
+    <ProjectReference Include="..\Libs\InfraredSensor.UWP\InfraredSensor.UWP.csproj">
+      <Project>{0249ab91-72ba-470b-a29d-e25795e825dd}</Project>
+      <Name>InfraredSensor.UWP</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Libs\TrackingSensorLib\TrackingSensorLib.csproj">
-      <Project>{ee171c97-b9d7-4c4d-a836-b710b23b0b08}</Project>
-      <Name>TrackingSensorLib</Name>
+    <ProjectReference Include="..\Libs\MotorControl.UWP\MotorControl.UWP.csproj">
+      <Project>{d44637ba-040b-4be6-b74f-851372c133ed}</Project>
+      <Name>MotorControl.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libs\PIDController.UWP\PIDController.UWP.csproj">
+      <Project>{1187625b-79d2-4cab-8123-1ca883f39669}</Project>
+      <Name>PIDController.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libs\Template10 %28Library%29\Template10 %28Library%29.csproj">
+      <Project>{ac3e4f10-6615-4e16-bb0f-104760c92b95}</Project>
+      <Name>Template10 %28Library%29</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libs\TrackingSensor.UWP\TrackingSensor.UWP.csproj">
+      <Project>{5f0e2aa3-e848-4055-89b7-ca308c57bb21}</Project>
+      <Name>TrackingSensor.UWP</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

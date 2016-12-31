@@ -12,7 +12,7 @@
     Publisher="CN=Janey"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="16ea971e-0008-4e50-931d-3372173a358e" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="f520eb89-465d-466e-9b59-f93ec1b6e32b" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>WinAlphaBotHeadless</DisplayName>

@@ -1,8 +1,17 @@
-﻿<Application
-    x:Class="WinAlphaBot.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WinAlphaBot"
-    RequestedTheme="Light">
+﻿<common:BootStrapper x:Class="WinAlphaBot.App"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:common="using:Template10.Common" RequestedTheme="Light">
 
-</Application>
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\Custom.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!--  custom resources go here  -->
+
+        </ResourceDictionary>
+    </Application.Resources>
+
+</common:BootStrapper>

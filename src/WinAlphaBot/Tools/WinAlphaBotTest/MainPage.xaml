@@ -1,0 +1,140 @@
+﻿<Page
+    x:Class="WinAlphaBotTest.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinAlphaBotTest"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="btnLedInitialize" Click="btnLedInitialize_Click">Initialize LED</Button>
+            <Button x:Name="btnLedOn" Click="btnLedOn_Click">LED On</Button>
+            <Button x:Name="btnLedOff" Click="btnLedOff_Click" Margin="0 0 0 10">LED Off</Button>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Background="Azure">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="1">PWM 1</TextBlock>
+                <TextBlock Grid.Row="2">Frequency1</TextBlock>
+                <TextBox x:Name="tbPWMFrequency1" Text="1000" Grid.Row="3"></TextBox>
+                <TextBlock Grid.Row="4">Duty Cycle</TextBlock>
+                <TextBox x:Name="tbPWMDutyCycle1" Text=".5" Grid.Row="5"></TextBox>
+
+                <Button x:Name="btnPwmInitialize1" Click="btnPwmInitialize_Click1" Content="Initialize" Grid.Row="1" Grid.Column="1"/>
+                <Button x:Name="btnPwmStart1" Click="btnPwmStart_Click1" Grid.Row="2" Grid.Column="1">Start</Button>
+                <Button x:Name="btnPwmStop1" Click="btnPwmStop_Click1" Grid.Row="3" Grid.Column="1">Stop</Button>
+                <Button x:Name="btnPwmForward1" Click="btnPwmForward_Click1" Grid.Row="4" Grid.Column="1">Forward</Button>
+                <Button x:Name="btnPwmBackward1" Click="btnPwmBackward_Click1" Grid.Row="5" Grid.Column="1">Back</Button>
+               
+
+                <TextBlock Grid.Row="1" Grid.Column="2">PWM 2</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="2">Frequency2</TextBlock>
+                <TextBox x:Name="tbPWMFrequency2" Text="1000" Grid.Row="3" Grid.Column="2"></TextBox>
+                <TextBlock Grid.Row="4" Grid.Column="2">Duty Cycle</TextBlock>
+                <TextBox x:Name="tbPWMDutyCycle2" Text=".5" Grid.Row="5" Grid.Column="2"></TextBox>
+                
+
+                <Button x:Name="btnPwmInitialize2" Click="btnPwmInitialize_Click2" Content="Initialize" Grid.Row="1" Grid.Column="3"/>
+                <Button x:Name="btnPwmStart2" Click="btnPwmStart_Click2" Grid.Row="2" Grid.Column="3">Start</Button>
+                <Button x:Name="btnPwmStop2" Click="btnPwmStop_Click2" Grid.Row="3" Grid.Column="3">Stop</Button>
+                <Button x:Name="btnPwmForward2" Click="btnPwmForward_Click2" Grid.Row="4" Grid.Column="3">Forward</Button>
+                <Button x:Name="btnPwmBackward2" Click="btnPwmBackward_Click2" Grid.Row="5" Grid.Column="3">Back</Button>
+            </Grid>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid Background="LightYellow">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="btnLeftFront" Click="btnLeftFront_Click"  Margin="0 0 0 10">LeftFront</Button>
+                <Button x:Name="btnTurnLeft" Click="btnTurnLeft_Click" Grid.Column="1"  Margin="0 0 0 10">Turn Left</Button>
+                <Button x:Name="btnRightFront" Click="btnRightFront_Click" Grid.Column="2" Margin="0 0 0 10">RightFront</Button>
+                <Button x:Name="btnTurnRight" Click="btnTurnRight_Click" Grid.Column="3" Margin="0 0 0 10">Turn Right</Button>
+                <Button x:Name="btnInitialize" Click="btnInitialize_Click" Grid.Column="4" Margin="0 0 0 10">Initialize</Button>
+                <Button x:Name="btnForward" Click="btnForward_Click" Grid.Column="5" Margin="0 0 0 10">Forward</Button>
+                <Button x:Name="btnBack" Click="btnBack_Click" Grid.Column="6" Margin="0 0 0 10">Back</Button>
+                <Button x:Name="btnStop" Click="btnStop_Click" Grid.Column="7" Margin="0 0 0 10">Stop</Button>
+            </Grid>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid Background="LightGreen">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="btnTrackerInitialize" HorizontalAlignment="Left"  Click="btnTrackerInitialize_Click" Grid.Row="1">Initialize TrackerSensor</Button>
+                <Button x:Name="btnTrackerStart"  HorizontalAlignment="Left" Click="btnTrackerStart_Click" Grid.Row="2">Start TrackerSensor</Button>
+                <Button x:Name="btnTrackerUpdate"  HorizontalAlignment="Left" Click="btnTrackerUpdate_Click" Grid.Row="3">Update TrackerSensor Status</Button>
+                <Button x:Name="btnTrackerUnInitialize"  HorizontalAlignment="Left" Click="btnTrackerUnInitialize_Click" Grid.Row="4">UnInitialize TrackerSensor</Button>
+                <Button x:Name="btnTrack"  HorizontalAlignment="Left" Click="btnTrack_Click" Grid.Row="5">Tracking</Button>
+                <TextBlock Grid.Row="1" Grid.Column="1">TrackSensor1</TextBlock>
+                <TextBlock Grid.Row="2" Grid.Column="1">TrackSensor2</TextBlock>
+                <TextBlock Grid.Row="3" Grid.Column="1">TrackSensor3</TextBlock>
+                <TextBlock Grid.Row="4" Grid.Column="1">TrackSensor4</TextBlock>
+                <TextBlock Grid.Row="5" Grid.Column="1">TrackSensor5</TextBlock>
+                <TextBox x:Name="tbTrackerSensor1" Text="5" Height="5" Grid.Row="1" Grid.Column="2"></TextBox>
+                <TextBox x:Name="tbTrackerSensor2" Text="17" Height="5" Grid.Row="2" Grid.Column="2"></TextBox>
+                <TextBox x:Name="tbTrackerSensor3" Text="22" Height="5" Grid.Row="3" Grid.Column="2"></TextBox>
+                <TextBox x:Name="tbTrackerSensor4" Text="23" Height="5" Grid.Row="4" Grid.Column="2"></TextBox>
+                <TextBox x:Name="tbTrackerSensor5" Text="27" Height="5" Grid.Row="5" Grid.Column="2"></TextBox>
+            </Grid>
+            <!--<stackpanel orientation="horizontal">
+                <textblock>tracksensor3</textblock>
+                <textbox x:name="tbtrackersensor3" text="1" height="5"></textbox>
+            </stackpanel>
+            <stackpanel orientation="horizontal">
+                <textblock>tracksensor4</textblock>
+                <textbox x:name="tbtrackersensor4" text="1" height="5"></textbox>
+            </stackpanel>
+            <stackpanel orientation="horizontal">
+                <textblock>tracksensor5</textblock>
+                <textbox x:name="tbtrackersensor5" text="1" height="5"></textbox>
+            </stackpanel>-->
+        </StackPanel>
+  </Grid>
+</Page>
